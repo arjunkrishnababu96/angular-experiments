@@ -2,15 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
+import { FormGroup, FormControl } from '@angular/forms';
+import { HttpService } from 'src/app/http.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   message: string;
 
-  constructor(public authService: AuthService, public router: Router) { 
+  loginForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+  });
+
+  constructor(public authService: AuthService, public router: Router, private http: HttpService) { 
     this.setMessage();
   }
 
@@ -36,6 +44,14 @@ export class LoginComponent implements OnInit {
   logout()  {
     this.authService.logout();
     this.setMessage();
+  }
+
+  onLogin() {
+    console.log(this.loginForm.value);
+    this.http.verifyUser(this.loginForm.value).subscribe(data => {
+      console.log(data["name"]);
+    });
+    // return this.http.post()
   }
 
   ngOnInit() {

@@ -1,6 +1,16 @@
 <h2>LOGIN</h2>
 <p>{{message}}</p>
+
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <input type="text" formControlName="username" placeholder="Username">
+  <input type="text" formControlName="password" placeholder="Password">
+  <button type="submit">Log In</button>
+</form>
+
 <p>
   <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
   <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
 </p>
+
+
+
