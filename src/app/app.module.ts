@@ -12,9 +12,9 @@ import { AssetsModule } from './assets/assets.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BooksModule,
-    AssetsModule
+    AssetsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
