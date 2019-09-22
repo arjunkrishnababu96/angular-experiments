@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { BooksRoutingModule } from './books-routing.module';
 import { BooklistComponent } from './booklist/booklist.component';
+import { BookdetailComponent } from './bookdetail/bookdetail.component';
 
 
 @NgModule({
-  declarations: [BooklistComponent],
+  declarations: [BooklistComponent, BookdetailComponent],
   imports: [
     CommonModule,
     BooksRoutingModule
